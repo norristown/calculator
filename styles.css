@@ -1,0 +1,25 @@
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 25%);
+    grid-template-rows: repeat(3, 25%);
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    grid-column: 4;
+    grid-row: 1 / span 3;
+}
+.container {
+    display: grid;
+    height: 600px;
+    width: 350px;
+    background-color: silver;
+}
+
+.display {
+    font-family: monospace;
+    font-size: 4rem;
+    height: 20%;
+    padding-right: 5px;
+}
