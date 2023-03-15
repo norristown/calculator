@@ -2,24 +2,51 @@
     display: grid;
     grid-template-columns: repeat(3, 25%);
     grid-template-rows: repeat(3, 25%);
+    flex: 1;
+}
+
+.one, .two, .three {
+    grid-row: 3;
+}
+
+.four, .five, .six {
+    grid-row: 2;
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     grid-column: 4;
     grid-row: 1 / span 3;
 }
+
+/* .right > button {
+    background-color: rgb(255, 150, 0);
+    border: 1px solid black;
+} */
+
 .container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     height: 600px;
     width: 350px;
     background-color: silver;
+    border: 5px solid black;
+    border-radius: 5px;
 }
 
 .display {
-    font-family: monospace;
-    font-size: 4rem;
-    height: 20%;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 5rem;
+    height: 30%;
     padding-right: 5px;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.bottom {
+    display: grid;
+    grid-auto-flow: column;
+    grid-row: 4;
+    grid-column: 1 / span 4;
 }
