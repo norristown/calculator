@@ -160,7 +160,7 @@ zero.addEventListener('click', () => {
         }
 });
 
-// GET A & OPERATOR
+// Operator functions
 let a = '';
 let b = '';
 let op = '';
@@ -201,7 +201,7 @@ operatorButtons.forEach((button) => {
     })
 });
 
-//GET B & DISPLAY ANSWER
+//Equal button function
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', () => {
     clickedEqual = true;
