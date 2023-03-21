@@ -42,6 +42,9 @@ function clear() {
         a = '';
         b = '';
         op = '';
+        clickedEqual = false;
+        clickedNumber = false;
+        clickedOperator = false;
 });
 };
 clear();
@@ -49,8 +52,8 @@ clear();
 //Number => display functions
 const one = document.querySelector('.one');
 one.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 1;
         } else {
@@ -60,8 +63,8 @@ one.addEventListener('click', () => {
 
 const two = document.querySelector('.two');
 two.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 2;
         } else {
@@ -71,8 +74,8 @@ two.addEventListener('click', () => {
 
 const three = document.querySelector('.three');
 three.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 3;
         } else {
@@ -82,8 +85,8 @@ three.addEventListener('click', () => {
 
 const four = document.querySelector('.four');
 four.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 4;
         } else {
@@ -93,8 +96,8 @@ four.addEventListener('click', () => {
 
 const five = document.querySelector('.five');
 five.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 5;
         } else {
@@ -104,8 +107,8 @@ five.addEventListener('click', () => {
 
 const six = document.querySelector('.six');
 six.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 6;
         } else {
@@ -115,8 +118,8 @@ six.addEventListener('click', () => {
 
 const seven = document.querySelector('.seven');
 seven.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 7;
         } else {
@@ -126,8 +129,8 @@ seven.addEventListener('click', () => {
 
 const eight = document.querySelector('.eight');
 eight.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 8;
         } else {
@@ -137,8 +140,8 @@ eight.addEventListener('click', () => {
 
 const nine = document.querySelector('.nine');
 nine.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 9;
         } else {
@@ -148,8 +151,8 @@ nine.addEventListener('click', () => {
 
 const zero = document.querySelector('.zero');
 zero.addEventListener('click', () => {
-        if (display.textContent === '0' || clicked === true) {
-            clicked = false;
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
             display.textContent = '';
             display.textContent += 0;
         } else {
@@ -159,22 +162,42 @@ zero.addEventListener('click', () => {
 
 // GET A & OPERATOR
 let a = '';
+let b = '';
 let op = '';
+let clickedOperator = false;
+let clickedNumber = false;
+let clickedEqual = false;
 const operatorButtons = document.querySelectorAll('.right > button:not(.clear)');
-let clicked = false;
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        clicked = true;
-        op += button.innerHTML;
-        a += display.textContent;
+        if (clickedOperator === false && clickedNumber === false) {
+            clickedOperator = true;
+            clickedNumber = true;
+            op += button.innerHTML;
+            a += display.textContent;
+        } else if (clickedOperator === false && clickedEqual === false) {
+            clickedOperator = true;
+            b = ''
+            b += display.textContent
+            let answer = operate(Number(a), Number(b), op);
+            display.textContent = answer;
+            a = '';
+            a = display.textContent;
+            op = '';
+            op = button.innerHTML
+            console.log(a, b, op)
+            console.log(clickedOperator, clickedNumber, clickedEqual)
+        }
     })
 });
 
 //GET B & DISPLAY ANSWER
-let b = '';
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', () => {
+    clickedEqual = true;
+    b = '';
     b += display.textContent
     const answer = operate(Number(a), Number(b), op);
     display.textContent = answer;
+    console.log(a, b, op)
 });
