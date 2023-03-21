@@ -35,19 +35,21 @@ operate();
 const display = document.querySelector('.display');
 
 //CLEAR
-function clear() {
+function clear(text) {
     const clear = document.querySelector('.clear');
     clear.addEventListener('click', () => {
-        display.textContent = "0";
+        display.textContent = text;
         a = '';
         b = '';
         op = '';
         clickedEqual = false;
         clickedNumber = false;
         clickedOperator = false;
+        console.log(a, b, op)
+        console.log(clickedOperator, clickedNumber, clickedEqual)
 });
 };
-clear();
+clear(0);
 
 //Number => display functions
 const one = document.querySelector('.one');
@@ -56,6 +58,13 @@ one.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 1;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 1;
+            op = '';
+            a = '';
         } else {
             display.textContent += 1;
         }
@@ -67,6 +76,13 @@ two.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 2;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 2;
+            op = '';
+            a = '';
         } else {
             display.textContent += 2;
         }
@@ -78,6 +94,13 @@ three.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 3;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 3;
+            op = '';
+            a = '';
         } else {
             display.textContent += 3;
         }
@@ -89,6 +112,13 @@ four.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 4;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 4;
+            op = '';
+            a = '';
         } else {
             display.textContent += 4;
         }
@@ -100,6 +130,13 @@ five.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 5;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 5;
+            op = '';
+            a = '';
         } else {
             display.textContent += 5;
         }
@@ -111,6 +148,13 @@ six.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 6;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 6;
+            op = '';
+            a = '';
         } else {
             display.textContent += 6;
         }
@@ -122,6 +166,13 @@ seven.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 7;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 7;
+            op = '';
+            a = '';
         } else {
             display.textContent += 7;
         }
@@ -133,6 +184,13 @@ eight.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 8;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 8;
+            op = '';
+            a = '';
         } else {
             display.textContent += 8;
         }
@@ -144,6 +202,13 @@ nine.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 9;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 9;
+            op = '';
+            a = '';
         } else {
             display.textContent += 9;
         }
@@ -155,6 +220,13 @@ zero.addEventListener('click', () => {
             clickedOperator = false;
             display.textContent = '';
             display.textContent += 0;
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            display.textContent = '';
+            display.textContent += 0;
+            op = '';
+            a = '';
         } else {
             display.textContent += 0;
         }
@@ -186,7 +258,7 @@ operatorButtons.forEach((button) => {
             op = '';
             op = button.innerHTML
             console.log(a, b, op)
-            console.log(clickedOperator, clickedNumber, clickedEqual)
+            console.log('test2',clickedOperator, clickedNumber, clickedEqual)
         } else if (clickedOperator === false && clickedNumber === true && clickedEqual === true) {
             clickedEqual = false;
             clickedOperator = true;
@@ -195,8 +267,11 @@ operatorButtons.forEach((button) => {
             op = '';
             op = button.innerHTML;
             console.log(a, b, op)
-            console.log(clickedOperator, clickedNumber, clickedEqual)
-            
+            console.log('third', clickedOperator, clickedNumber, clickedEqual)
+        } else if (clickedOperator === true) {
+            op = '';
+            op = button.innerHTML;
+            console.log(a, b, op);
         }
     })
 });
