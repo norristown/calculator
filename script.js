@@ -187,6 +187,16 @@ operatorButtons.forEach((button) => {
             op = button.innerHTML
             console.log(a, b, op)
             console.log(clickedOperator, clickedNumber, clickedEqual)
+        } else if (clickedOperator === false && clickedNumber === true && clickedEqual === true) {
+            clickedEqual = false;
+            clickedOperator = true;
+            a = '';
+            a = display.textContent;
+            op = '';
+            op = button.innerHTML;
+            console.log(a, b, op)
+            console.log(clickedOperator, clickedNumber, clickedEqual)
+            
         }
     })
 });
@@ -200,4 +210,5 @@ equal.addEventListener('click', () => {
     const answer = operate(Number(a), Number(b), op);
     display.textContent = answer;
     console.log(a, b, op)
+    console.log(clickedOperator, clickedNumber, clickedEqual)
 });
