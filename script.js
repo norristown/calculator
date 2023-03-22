@@ -45,6 +45,7 @@ function clear(text) {
         clickedEqual = false;
         clickedNumber = false;
         clickedOperator = false;
+        clickedDecimal = false;
         console.log(a, b, op)
         console.log(clickedOperator, clickedNumber, clickedEqual)
 });
@@ -232,24 +233,33 @@ zero.addEventListener('click', () => {
         }
 });
 
+let clickedDecimal = false;
 const decimal = document.querySelector('.decimal');
 decimal.addEventListener('click', () => {
-    if (display.textContent === '0' || clickedOperator === true) {
-        clickedOperator = false;
-        display.textContent = '';
-        display.textContent += '.';
-    } else if (clickedEqual === true) {
-        clickedEqual = false;
-        clickedNumber = false;
-        display.textContent = '';
-        display.textContent += '.';
-        op = '';
-        a = '';
+    if (clickedDecimal === false){
+        if (display.textContent === '0' || clickedOperator === true) {
+            clickedOperator = false;
+            clickedDecimal = true;
+            display.textContent = '';
+            display.textContent += '.';
+        } else if (clickedEqual === true) {
+            clickedEqual = false;
+            clickedNumber = false;
+            clickedDecimal = true;
+            display.textContent = '';
+            display.textContent += '.';
+            op = '';
+            a = '';
+        } else {
+            clickedDecimal = true;
+            display.textContent += '.';
+        }
     } else {
-        display.textContent += '.';
+        backspaceFunction();
     }
 });
 
+const backspaceFunction = () => {
 const backspace = document.querySelector('.backspace');
 backspace.addEventListener('click', () => {
     const del = display.textContent.length - 1;
@@ -257,7 +267,8 @@ backspace.addEventListener('click', () => {
     display.textContent = x;
     
 })
-
+}
+backspaceFunction();
 // Operator functions
 let a = '';
 let b = '';
@@ -271,10 +282,12 @@ operatorButtons.forEach((button) => {
         if (clickedOperator === false && clickedNumber === false) {
             clickedOperator = true;
             clickedNumber = true;
+            clickedDecimal = false;
             op += button.innerHTML;
             a += display.textContent;
         } else if (clickedOperator === false && clickedEqual === false) {
             clickedOperator = true;
+            clickedDecimal = false;
             b = ''
             b += display.textContent
             let answer = operate(Number(a), Number(b), op);
@@ -288,6 +301,7 @@ operatorButtons.forEach((button) => {
         } else if (clickedOperator === false && clickedNumber === true && clickedEqual === true) {
             clickedEqual = false;
             clickedOperator = true;
+            clickedDecimal = false;
             a = '';
             a = display.textContent;
             op = '';
@@ -295,6 +309,7 @@ operatorButtons.forEach((button) => {
             console.log(a, b, op)
             console.log('third', clickedOperator, clickedNumber, clickedEqual)
         } else if (clickedOperator === true) {
+            clickedDecimal = false;
             op = '';
             op = button.innerHTML;
             console.log(a, b, op);
@@ -306,9 +321,10 @@ operatorButtons.forEach((button) => {
 const equal = document.querySelector('.equal');
 equal.addEventListener('click', () => {
     clickedEqual = true;
+    clickedDecimal = false;
     b = '';
     b += display.textContent
-    const answer = operate(Number(a), Number(b), op);
+    const answer = Math.round(operate(Number(a), Number(b), op) * 1000) / 1000 ;
     display.textContent = answer;
     console.log(a, b, op)
     console.log(clickedOperator, clickedNumber, clickedEqual)
