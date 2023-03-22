@@ -232,6 +232,32 @@ zero.addEventListener('click', () => {
         }
 });
 
+const decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', () => {
+    if (display.textContent === '0' || clickedOperator === true) {
+        clickedOperator = false;
+        display.textContent = '';
+        display.textContent += '.';
+    } else if (clickedEqual === true) {
+        clickedEqual = false;
+        clickedNumber = false;
+        display.textContent = '';
+        display.textContent += '.';
+        op = '';
+        a = '';
+    } else {
+        display.textContent += '.';
+    }
+});
+
+const backspace = document.querySelector('.backspace');
+backspace.addEventListener('click', () => {
+    const del = display.textContent.length - 1;
+    const x = display.textContent.slice(0, del);
+    display.textContent = x;
+    
+})
+
 // Operator functions
 let a = '';
 let b = '';
