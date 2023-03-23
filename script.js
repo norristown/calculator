@@ -258,14 +258,14 @@ decimal.addEventListener('click', () => {
         backspaceFunction();
     }
 });
-//Decimal doesn't work after using backspace
+
 const backspaceFunction = () => {
 const backspace = document.querySelector('.backspace');
 backspace.addEventListener('click', () => {
     const del = display.textContent.length - 1;
     const x = display.textContent.slice(0, del);
     display.textContent = x;
-    
+    clickedDecimal = false;
 })
 }
 backspaceFunction();
