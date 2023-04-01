@@ -23,9 +23,9 @@ const operate = function(a, b, op) {
         return add(a, b);
     } else if (op === '-') {
         return subtract(a, b);
-    } else if (op === '×') {
+    } else if (op === '×' || op === '*') {
         return multiply(a, b);
-    } else if (op === '÷') {
+    } else if (op === '÷' || op === '/') {
         return divide(a, b);
     }
 }
@@ -52,185 +52,79 @@ function clear(text) {
 };
 clear(0);
 
+let a = '';
+let b = '';
+let op = '';
+let clickedOperator = false;
+let clickedNumber = false;
+let clickedEqual = false;
+
+function numFunction(num) {
+    if (display.textContent === '0' || clickedOperator === true) {
+        clickedOperator = false;
+        display.textContent = '';
+        display.textContent += num;
+    } else if (clickedEqual === true) {
+        clickedEqual = false;
+        clickedNumber = false;
+        display.textContent = '';
+        display.textContent += num;
+        op = '';
+        a = '';
+    } else {
+        display.textContent += num;
+    }
+}
+
 //Number => display functions
 const one = document.querySelector('.one');
 one.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 1;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 1;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 1;
-        }
+    numFunction(1);
 });
 
 const two = document.querySelector('.two');
 two.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 2;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 2;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 2;
-        }
+    numFunction(2);
 });
 
 const three = document.querySelector('.three');
 three.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 3;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 3;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 3;
-        }
+    numFunction(3);
 });
 
 const four = document.querySelector('.four');
 four.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 4;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 4;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 4;
-        }
+    numFunction(4);
 });
 
 const five = document.querySelector('.five');
 five.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 5;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 5;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 5;
-        }
+    numFunction(5);
 });
 
 const six = document.querySelector('.six');
 six.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 6;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 6;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 6;
-        }
+    numFunction(6);
 });
 
 const seven = document.querySelector('.seven');
 seven.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 7;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 7;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 7;
-        }
+    numFunction(7);
 });
 
 const eight = document.querySelector('.eight');
 eight.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 8;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 8;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 8;
-        }
+    numFunction(8);
 });
 
 const nine = document.querySelector('.nine');
 nine.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 9;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 9;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 9;
-        }
+    numFunction(9);
 });
 
-const zero = document.querySelector('.zero');
-zero.addEventListener('click', () => {
-        if (display.textContent === '0' || clickedOperator === true) {
-            clickedOperator = false;
-            display.textContent = '';
-            display.textContent += 0;
-        } else if (clickedEqual === true) {
-            clickedEqual = false;
-            clickedNumber = false;
-            display.textContent = '';
-            display.textContent += 0;
-            op = '';
-            a = '';
-        } else {
-            display.textContent += 0;
-        }
+const zero_48 = document.querySelector('.zero');
+zero_48.addEventListener('click', () => {
+    numFunction(0);
 });
 
 let clickedDecimal = false;
@@ -269,13 +163,45 @@ backspace.addEventListener('click', () => {
 })
 }
 backspaceFunction();
+
 // Operator functions
-let a = '';
-let b = '';
-let op = '';
-let clickedOperator = false;
-let clickedNumber = false;
-let clickedEqual = false;
+function operatorFunction(operator) {
+    if (clickedOperator === false && clickedNumber === false) {
+        clickedOperator = true;
+        clickedNumber = true;
+        clickedDecimal = false;
+        op += operator;
+        a += display.textContent;
+    } else if (clickedOperator === false && clickedEqual === false) {
+        clickedOperator = true;
+        clickedDecimal = false;
+        b = ''
+        b += display.textContent
+        let answer = Math.round(operate(Number(a), Number(b), op) * 1000) / 1000;
+        display.textContent = answer;
+        a = '';
+        a = display.textContent;
+        op = '';
+        op = operator
+        console.log(a, b, op)
+        console.log('test2',clickedOperator, clickedNumber, clickedEqual)
+    } else if (clickedOperator === false && clickedNumber === true && clickedEqual === true) {
+        clickedEqual = false;
+        clickedOperator = true;
+        clickedDecimal = false;
+        a = '';
+        a = display.textContent;
+        op = '';
+        op = operator;
+        console.log(a, b, op)
+        console.log('third', clickedOperator, clickedNumber, clickedEqual)
+    } else if (clickedOperator === true) {
+        clickedDecimal = false;
+        op = '';
+        op = operator;
+        console.log(a, b, op);
+    }
+}
 const operatorButtons = document.querySelectorAll('.right > button:not(.clear)');
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -290,7 +216,7 @@ operatorButtons.forEach((button) => {
             clickedDecimal = false;
             b = ''
             b += display.textContent
-            let answer = operate(Number(a), Number(b), op);
+            let answer = Math.round(operate(Number(a), Number(b), op) * 1000) / 1000;
             display.textContent = answer;
             a = '';
             a = display.textContent;
@@ -329,3 +255,52 @@ equal.addEventListener('click', () => {
     console.log(a, b, op)
     console.log(clickedOperator, clickedNumber, clickedEqual)
 });
+
+//Keypress Function
+// window.addEventListener('keypress', function(e) {
+//     console.log(e.key)
+//     if (e.key === '0') {
+//         numFunction(0);
+//     } else if (e.key === '1') {
+//         numFunction(e.key);
+//     } else if (e.key === '2') {
+//         numFunction(e.key);
+//     } else if (e.key === '3') {
+//         numFunction(e.key);
+//     } else if (e.key === '4') {
+//         numFunction(e.key);
+//     } else if (e.key === '5') {
+//         numFunction(e.key);
+//     } else if (e.key === '6') {
+//         numFunction(e.key);
+//     } else if (e.key === '7') {
+//         numFunction(e.key);
+//     } else if (e.key === '8') {
+//         numFunction(e.key);
+//     } else if (e.key === '9') {
+//         numFunction(e.key);
+//     } else if (e. key === '-') {
+//         operatorFunction('-');
+//     } else if (e.key === '+') {
+//         operatorFunction('+');
+//     } else if (e.key === '*') {
+//         operatorFunction(e.key);
+//     } else if (e.key === ('/')) {
+//         operatorFunction('/');
+//     }
+// })
+
+window.addEventListener('keypress', function(e) {
+    if (e.key === '-' && e.key === '+' && e.key === '*' && e.key === '/' && e.key) {
+        operatorFunction(e.key)
+    } else if (e.key === 'Enter') {
+        clickedEqual = true;
+        clickedDecimal = false;
+        b = '';
+        b += display.textContent
+        const answer = Math.round(operate(Number(a), Number(b), op) * 1000) / 1000 ;
+        display.textContent = answer;
+    } else {
+        numFunction(e.key)
+    }
+})
