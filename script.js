@@ -46,8 +46,8 @@ function clear(text) {
         clickedNumber = false;
         clickedOperator = false;
         clickedDecimal = false;
-        console.log(a, b, op)
-        console.log(clickedOperator, clickedNumber, clickedEqual)
+        console.log('a = ' + a, 'b = ' + b, 'op =' + op)
+        // console.log(clickedOperator, clickedNumber, clickedEqual)
 });
 };
 clear(0);
@@ -244,63 +244,47 @@ operatorButtons.forEach((button) => {
 });
 
 //Equal button function
-const equal = document.querySelector('.equal');
-equal.addEventListener('click', () => {
+function equalFunction() {
     clickedEqual = true;
     clickedDecimal = false;
     b = '';
     b += display.textContent
     const answer = Math.round(operate(Number(a), Number(b), op) * 1000) / 1000 ;
     display.textContent = answer;
-    console.log(a, b, op)
-    console.log(clickedOperator, clickedNumber, clickedEqual)
+}
+const equal = document.querySelector('.equal');
+equal.addEventListener('click', () => {~
+    equalFunction();
 });
 
 //Keypress Function
-// window.addEventListener('keypress', function(e) {
-//     console.log(e.key)
-//     if (e.key === '0') {
-//         numFunction(0);
-//     } else if (e.key === '1') {
-//         numFunction(e.key);
-//     } else if (e.key === '2') {
-//         numFunction(e.key);
-//     } else if (e.key === '3') {
-//         numFunction(e.key);
-//     } else if (e.key === '4') {
-//         numFunction(e.key);
-//     } else if (e.key === '5') {
-//         numFunction(e.key);
-//     } else if (e.key === '6') {
-//         numFunction(e.key);
-//     } else if (e.key === '7') {
-//         numFunction(e.key);
-//     } else if (e.key === '8') {
-//         numFunction(e.key);
-//     } else if (e.key === '9') {
-//         numFunction(e.key);
-//     } else if (e. key === '-') {
-//         operatorFunction('-');
-//     } else if (e.key === '+') {
-//         operatorFunction('+');
-//     } else if (e.key === '*') {
-//         operatorFunction(e.key);
-//     } else if (e.key === ('/')) {
-//         operatorFunction('/');
-//     }
-// })
-
 window.addEventListener('keypress', function(e) {
-    if (e.key === '-' && e.key === '+' && e.key === '*' && e.key === '/' && e.key) {
-        operatorFunction(e.key)
-    } else if (e.key === 'Enter') {
-        clickedEqual = true;
-        clickedDecimal = false;
-        b = '';
-        b += display.textContent
-        const answer = Math.round(operate(Number(a), Number(b), op) * 1000) / 1000 ;
-        display.textContent = answer;
-    } else {
+    console.log(e.key)
+    if (
+        e.key === '-' ||
+        e.key === '+' || 
+        e.key === '*' || 
+        e.key === '/'
+    ) {
+        operatorFunction(e.key);
+    } else if (e.key === 'Enter') { //This doesn't work even though pressing the Equal button does and it's the same code
+        equalFunction();
+    } else if (
+        e.key === '1' ||
+        e.key === '2' ||
+        e.key === '3' ||
+        e.key === '4' ||
+        e.key === '5' ||
+        e.key === '6' ||
+        e.key === '7' ||
+        e.key === '8' ||
+        e.key === '9' ||
+        e.key === '0' 
+    ) {
         numFunction(e.key)
+    // } else if (e.key === 'Backspace') {
+    //     backspaceFunction();
+    } else {
+        false;
     }
 })
