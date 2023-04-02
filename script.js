@@ -46,8 +46,6 @@ function clear(text) {
         clickedNumber = false;
         clickedOperator = false;
         clickedDecimal = false;
-        console.log('a = ' + a, 'b = ' + b, 'op =' + op)
-        // console.log(clickedOperator, clickedNumber, clickedEqual)
 });
 };
 clear(0);
@@ -253,7 +251,7 @@ function equalFunction() {
     display.textContent = answer;
 }
 const equal = document.querySelector('.equal');
-equal.addEventListener('click', () => {~
+equal.addEventListener('click', () => {
     equalFunction();
 });
 
@@ -268,6 +266,7 @@ window.addEventListener('keypress', function(e) {
     ) {
         operatorFunction(e.key);
     } else if (e.key === 'Enter') { //This doesn't work even though pressing the Equal button does and it's the same code
+        console.log(e)
         equalFunction();
     } else if (
         e.key === '1' ||
